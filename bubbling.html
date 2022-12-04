@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title> Bubbling </title>
+	<style>
+		body{
+			background-color : yellow ;
+			height : 600px ;
+		}
+		
+		#divTag{
+			background-color : green ;
+			height : 200px ;
+			width : 500px ;
+		}
+		#pTag{
+			background-color : red ;
+			height :80px ;
+			width : 200px ;
+		}
+	</style>
+	
+  </head>
+  <body>
+	  <div id="divTag">
+		This is example of bubbling and capturing you can see on console
+			<p id="pTag">
+			</p>
+			
+	  </div>
+	  This three method are working here for body , div and p tag ::::::<br><br>
+	  p.addEventListener('click', functionP);<br>
+		div.addEventListener('click', functiondiv, true);<br>
+		document.body.addEventListener('click', functiobody);
+
+	<script>
+		let p = document.getElementById("pTag");
+		let div = document.getElementById("divTag");
+		
+		p.addEventListener('click', functionP);
+		div.addEventListener('click', functiondiv, true);
+		document.body.addEventListener('click', functiobody);
+		
+		function functionP(){
+			console.log("p clicked..");
+		}
+		
+		function functiondiv(){
+			console.log("div clicked..");
+		}
+		function functiobody(){
+			console.log("body clicked..");
+		}
+		
+	</script>
+
+  </body>
+</html>

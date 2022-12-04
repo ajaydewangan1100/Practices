@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title> Stop Watch </title>
+	<style>
+		body {
+			height : 97vh ;
+			display : flex;
+			justify-content : center;
+			align-items : center;
+			background-color : #383840 ;
+			color : white ;
+			text-align : center ;
+		}
+		.times {
+			font-size : 200px ;
+			font-weight : bold ;
+		}
+		.times-text {
+			font-size : 30px ;
+			font-weight : bold ;
+			padding-right : 30px
+		}
+		.all-button {
+			padding : 5px 40px ;
+			font-size : 20px ;
+			margin : 0px 20px ;
+			color : white ;
+		}
+		#start {
+			background-color : #2fde55 ;
+		}
+		#stop {
+			background-color : #2825ee ;
+		}
+		#reset {
+			background-color : #f65e55 ;
+		}
+		
+	</style>
+
+  </head>
+  <body>
+	<div>
+		<div id="time-container">
+			<span id="hr" class="times"> 0 </span>
+			<span id="hr-text" class="times-text">Hr</span>
+			
+			<span id="min" class="times"> 0 </span>
+			<span id="min-text" class="times-text"> Min </span>
+			
+			<span id="sec" class="times"> 0 </span>
+			<span id="sec-text" class="times-text"> Sec </span>
+			
+			<span id="count" class="times"> 0 </span>
+		
+		</div>
+		<div id="btn-container">
+			<button id="start" class="all-button" onclick="start()"> Start </button>
+			<button id="stop" class="all-button" onclick="stop()"> Stop </button>
+			<button id="reset" class="all-button" onclick="reset()"> Reset </button>
+		</div>
+	</div>
+  
+	
+	<script>
+		let count = document.getElementById("count");
+		let sec = document.getElementById("sec");
+		let min = document.getElementById("min");
+		let hr = document.getElementById("hr");
+		
+		let hr1 = 0 ;
+		let min1 = 0 ;
+		let sec1 = 0 ;
+		let count1 = 0 ;
+		
+		let flag ;
+		
+		function start() {
+			flag = true ;
+			change() ;
+		}
+		
+		function stop() {
+			flag = false ;
+			console.log(flag);
+			change() ;
+		}	
+
+		function reset() {
+			flag = false ;
+			hr1 = 0 ;
+			min1 = 0 ;
+			sec1 = 0 ;
+			count1 = 0 ;
+			
+			sec.innerHTML = "0" + sec1 ;
+			min.innerHTML = "0" + min1 ;
+			hr.innerHTML = "0" + hr1 ;
+			count.innerHTML = "0" + count1 ;
+			
+		}
+		
+		
+		function change() {
+			console.log("under _change");
+			
+			setInterval (function() {
+				if(flag == true){
+					console.log("under _if");
+					if(count1 == 100){
+						sec1 = sec1 + 1 ;
+						count1 = 0 ;
+					}
+					
+					if(sec1 == 60){
+						min1 = min1 + 1 ;
+						sec1 = 0 ;
+					}
+					
+					if(min1 == 60){
+						hr1 = hr1 + 1 ;
+						min1 = 0 ;
+					}
+				
+					if (sec < 10) {sec.innerHTML = "0" + sec1 ;}else{sec.innerHTML = sec1 ;}
+					if (min < 10) {min.innerHTML = "0" + min1 ;}else{min.innerHTML = min1 ;}
+					if (hr < 10)  {hr.innerHTML = "0" + hr1 ;}  else{hr.innerHTML = hr1 ;}
+					if (count<10) {count.innerHTML = "0" + count1;}else{count.innerHTML = count1 ;}
+					
+					count1 += 1 ;
+				};
+			},10);
+			
+		}
+	</script>
+
+  </body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title> Image Slider </title>
+	<style>
+		body {
+			margin : 0px ;
+		}
+		
+		#div-under-main {
+			position : absolute ;
+			display : block ;
+			width : 100% ;
+		}
+		.all-container {
+			
+			display : none ;
+			width : 100% ;
+		}
+		.all-img {
+			display :block ;
+			width : 100% ;
+			height : 60vh ;
+		}
+		span {
+			color : black ;
+			font-size : 30px ;
+			padding : 23px 30px ;
+			background-color : rgba(200,200,200,0.4) ;
+			border-radius : 50% ;
+			position : absolute ;
+			top : 170px ;
+		}
+		#prev {
+			position : float ;
+			left  : 20px ;
+			margin-left : 30px ;
+		}
+		#next {
+			position : float ;
+			right : 20px;
+			margin-right : 30px ;
+		}
+		.all-text {
+			position : absolute ;
+			bottom : 0px ;
+			width : 100% ;
+			text-align : center ;
+			color : white ;
+			font-size : 40px ;
+			font-weight : bold ;
+			background-color : rgba(0,0,0,0.5) ;
+		}
+		
+	</style>
+
+  </head>
+  <body>
+	<div id="div-under-main">
+		<div class="all_container">
+			<img src="images/1.png" class="all-img">
+			<div class="all-text"> image 1 </div>
+		</div>
+		
+		<div class="all_container" id="uu">
+			<img src="images/2.png" class="all-img">
+			<div class="all-text"> image 2 </div>
+		</div>
+		
+		<div class="all_container" id="rr">
+			<img src="images/3.png" class="all-img">
+			<div class="all-text"> image 3 </div>
+		</div>
+		
+		<div class="all_container">
+			<img src="images/4.png" class="all-img">
+			<div class="all-text"> image 4 </div>
+		</div>
+		
+		<div class="all_container">
+			<img src="images/5.png" class="all-img">
+			<div class="all-text"> image 5 </div>
+		</div>
+		
+		<div class="all_container">
+			<img src="images/6.png" class="all-img">
+			<div class="all-text"> image 6 </div>
+		</div>
+		
+		<span id="prev"> &#9665; </span>
+		<span id="next"> &#9655; </span>
+	</div>
+
+	<script>
+		let flag = 0 ;
+		
+		//Getting Element here
+		let container = document.getElementsByClassName("all_container");
+		//console.log(container);
+		let prev = document.getElementById("prev");
+		let next = document.getElementById("next");
+
+		
+		function changer(num){
+			console.log(num);
+			console.log(container[num]);
+			
+			if(num < 0) {
+				num = container.length - 1 ;
+				flag = container.length - 1 ;
+			}else if (num === container.length){
+				num = 0 ;
+				flag = 0 ;
+			}
+
+			//Loop for change all Element none
+			for (let y of container) {
+				y.style.display = "none";
+		    };
+		
+			//Display block when Flag machtes
+			container[num].style.display = "block" ;
+		}
+		
+		//Function calling for change display== container[flag] 
+		changer(flag);
+		
+		//Event Listener Here in prev and next
+		prev.addEventListener("click", changer_p) ;
+		next.addEventListener("click", changer_n) ;
+		
+		
+		//function for prev and next click
+		function changer_p() {
+			flag -= 1 ;
+			changer(flag) ;
+			
+		}
+		function changer_n() {
+			flag += 1
+			console.log(flag) ;
+			changer(flag) ;
+		}
+		
+		
+	
+	</script>
+
+  </body>
+</html>

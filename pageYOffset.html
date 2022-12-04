@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title> pageYOffset -show scrolled pixels </title>
+	<style> 
+		body{
+			
+			height : 200vh ;
+			text-align : center ;
+			background: rgba(13,09,150,0.4);
+		}
+		
+		p {
+			background-color : yellow ;
+			height : 50px ;
+			width : 50% ;
+		}
+		
+		#p2 {
+			position : fixed ;
+			bottom : 0 ;
+			right : 0 ;
+			
+		}
+	</style>
+  </head>
+  <body>
+	
+	<p id="p2">	See how Body Color is Change in PageYOffset</p>
+	<p id="p1">  PageYOffset is working you can see when scoll color is 
+	change of this div<br> and in console printing value also </p>
+	<script>
+		
+		let p1 = document.getElementById("p1") ;
+		
+		window.addEventListener('scroll', function(){
+		    console.log(window.pageYOffset) ;
+			p1.style.backgroundColor = "rgba(0,200,0,0.9)" ;
+			if(80<window.pageYOffset) {
+				document.body.style.background = "linear-gradient(rgba(63,94,251,1), rgba(252,70,107,1))"; 
+			}
+			if(300<window.pageYOffset) {
+				document.body.style.background = "linear-gradient(rgba(252,70,107,1) , rgba(70,252,143,1) )"; 
+			}
+})
+	</script>
+
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title> Word and Char counter </title>
+	<style>
+		body {
+			padding : 10px 100px ;
+			text-align : center ;
+			background-image : linear-gradient(to right ,#44ddd0, #2a4481) ;
+		}
+		h1 {
+			color : white ;
+			background-image : linear-gradient(to right , #aa4411, #44ddd0) ;
+			padding : 20px ;
+			font-weight : bold;
+			
+		}
+		#textbox {
+			width : 90% ;
+			background-color : rgba(20,200,10,0.2) ;
+			height :200px ;
+			font-size : 20px ;
+			
+		}
+		div {
+			background-image : linear-gradient(to right , #aa4411, #44ddd0) ;
+			padding : 5px ;
+			font-size : 30px ;
+			color : white ;
+			font-weight : bold ;
+			text-align : center ;
+			margin : 10px ;
+		}
+		
+		#pp {
+			padding : 5px ;
+			font-size : 20px ;
+			background-color : #454545 ;
+		}
+	</style>
+
+  </head>
+  <body>
+	<h1> Word and Character Count </h1>
+	<p>
+		<textArea  id="textbox" autofocus> </textarea>
+		<div> <span id="words">0</span> Words and <span id="char">0</span> Characters
+		</div><br><br><br>
+		<p id="pp"> We use this methods ---- .length, trim(), split("-seprator-here-"), filter(function) <br><br> 
+		Note -- Only space seprator used here,  you can use (/[, ]+/) for comma & space separator at one time 
+		</p>
+	</p>
+  
+	
+	
+	<script>
+			let textbox = document.getElementById("textbox") ;
+			let words = document.getElementById("words");
+		
+		textbox.addEventListener('input', function(){
+			let char = document.getElementById("char") ;
+			let text = this.value ;
+			char.innerHTML = text.length ;
+		
+			text = text.trim() ;
+			text = text.split(" ") ;
+			
+			let wordCount = text.filter((elm) => elm != "" );
+			
+			words.innerText = wordCount.length ;
+		})
+		
+	</script>
+
+  </body>
+</html>
